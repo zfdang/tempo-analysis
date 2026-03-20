@@ -6,6 +6,24 @@ This demo agent is a **chat-driven conference trip planning agent** built on top
 
 It is not a general-purpose autonomous shopper.
 
+## Runtime Configuration
+
+The backend signer reads its private key from the `TEMPO_PRIVATE_KEY` environment variable.
+
+This demo no longer uses a mock payment fallback. If `TEMPO_PRIVATE_KEY` is missing,
+the backend refuses to start.
+
+That means the recommended way to run real Tempo testnet payments is:
+
+```bash
+export PAYMENT_MODE=testnet
+export DEMO_AGENT_WALLET_ADDRESS=0x25fBB15755ae6c3E18e17E1D77859D2b3c6560CE
+export TEMPO_PRIVATE_KEY=your_testnet_private_key
+./demo-agent/scripts/start-backend.sh
+```
+
+`TEMPO_PRIVATE_KEY` must be provided as a process environment variable.
+
 Its job is very specific:
 
 - read a natural-language travel request

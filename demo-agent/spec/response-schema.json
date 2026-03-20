@@ -67,6 +67,11 @@
         "destination",
         "departure_time",
         "arrival_time",
+        "return_label",
+        "return_origin",
+        "return_destination",
+        "return_departure_time",
+        "return_arrival_time",
         "price_usd",
         "red_eye"
       ],
@@ -85,6 +90,36 @@
         },
         "arrival_time": {
           "type": "string"
+        },
+        "return_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "return_origin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "return_destination": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "return_departure_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "return_arrival_time": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "price_usd": {
           "type": "number",
