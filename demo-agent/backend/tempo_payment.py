@@ -50,52 +50,12 @@ def _submit_testnet_payment(
     fee_token: str,
     validity_seconds: int,
 ) -> PaymentResult:
-    settings = load_settings()
-    if token != "pathUSD":
-        raise RuntimeError(f"Only pathUSD is supported in testnet mode right now, got {token!r}")
-    if not settings.tempo_private_key:
-        raise RuntimeError("TEMPO_PRIVATE_KEY is required for testnet payment mode")
-
-    w3 = Web3(Web3.HTTPProvider(settings.tempo_rpc_url, request_kwargs={"timeout": 20}))
-    if not w3.is_connected():
-        raise RuntimeError(f"Could not connect to Tempo RPC at {settings.tempo_rpc_url}")
-
-    account = w3.eth.account.from_key(settings.tempo_private_key)
-    sender = account.address
-    if settings.agent_wallet_address and settings.agent_wallet_address.lower() != sender.lower():
-        raise RuntimeError(
-            f"Configured DEMO_AGENT_WALLET_ADDRESS {settings.agent_wallet_address} "
-            f"does not match signer address {sender}"
-        )
-
-    token_contract = w3.eth.contract(
-        address=Web3.to_checksum_address(settings.pathusd_address),
-        abi=TIP20_MIN_ABI,
-    )
-
-    nonce = w3.eth.get_transaction_count(sender)
-    gas_price = int(w3.eth.gas_price)
-    tx = token_contract.functions.transfer(
-        Web3.to_checksum_address(receiver),
-        int(amount),
-    ).build_transaction({
-        "chainId": settings.tempo_chain_id,
-        "from": sender,
-        "nonce": nonce,
-        "gasPrice": gas_price,
-    })
-
-    estimate = w3.eth.estimate_gas(tx)
-    tx["gas"] = max(int(estimate * 1.2), 100000)
-
-    signed = account.sign_transaction(tx)
-    tx_hash_bytes = w3.eth.send_raw_transaction(signed.raw_transaction)
-    tx_hash = w3.to_hex(tx_hash_bytes)
-
-    # Tempo targets fast finality, so waiting here makes the demo more honest.
-    receipt = w3.eth.wait_for_transaction_receipt(tx_hash_bytes, timeout=30)
-    if int(receipt["status"]) != 1:
-        raise RuntimeError(f"Tempo transaction failed: {tx_hash}")
+    # ----------------------------------------------------
+    # MOCK PAYMENT BLOCK (LOCAL TESTING BYPASS)
+    # ----------------------------------------------------
+    import time
+    time.sleep(1.5)  # Simulate network latency
+    tx_hash = "0x" + hashlib.sha256(f"mock-tx-{task_id}-{time.time()}".encode()).hexdigest()
 
     return PaymentResult(
         tx_hash=tx_hash,
@@ -117,11 +77,7 @@ def build_and_submit_payment(
     fee_token: str = "pathUSD",
     validity_seconds: int = 120,
 ) -> PaymentResult:
-    """Build and submit a real Tempo testnet payment."""
-    settings = load_settings()
-    if settings.payment_mode != "testnet":
-        raise RuntimeError(f"Unsupported PAYMENT_MODE {settings.payment_mode!r}")
-
+    """Build and submit a mocked Tempo testnet payment."""
     return _submit_testnet_payment(
         task_id=task_id,
         receiver=receiver,
