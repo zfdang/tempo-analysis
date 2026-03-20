@@ -2,9 +2,11 @@
 
 ## What Tempo Is
 
-Tempo is not a single wallet product. It is a broader payments stack centered on a payment-optimized Layer 1 blockchain, machine payments, stablecoin infrastructure, and developer tooling. Public materials describe Tempo as a blockchain purpose-built for payments, with a focus on stablecoins, low-cost transfers, high throughput, and machine-native commerce.
+Tempo is not a single wallet product. It is a broader payments stack centered on a payment-optimized Layer 1 blockchain, machine payments, stablecoin infrastructure, and developer tooling. Tempo is a blockchain purpose-built for payments, with a focus on stablecoins, low-cost transfers, high throughput, and machine-native commerce.
 
-In practice, Tempo appears to combine several layers:
+Tempo was incubated by **Paradigm** and **Stripe**. Tempo Mainnet launched on **March 18, 2026**, alongside the **Machine Payments Protocol (MPP)**, an open standard for machine payments co-authored with Stripe.
+
+The Tempo stack combines several layers:
 
 - a payment-focused L1 network
 - protocol-level transaction primitives for payments
@@ -30,7 +32,7 @@ The product story is less about generalized speculation and more about real paym
 
 ### 2. Tempo Transactions
 
-One of Tempo's most important protocol-level features is its custom transaction model, referred to publicly as Tempo Transactions. These are presented as payment-native transactions that support capabilities such as:
+One of Tempo's most important protocol-level features is its custom transaction model, the `0x76` Tempo Transaction type. These are payment-native transactions that support:
 
 - passkey / WebAuthn authentication
 - batch calls
@@ -42,7 +44,7 @@ This is a major part of Tempo's value proposition: turning common payment workfl
 
 ### 3. TIP-20 Stablecoin Standard
 
-Tempo also introduces TIP-20, its stablecoin-oriented token standard. Public descriptions suggest that TIP-20 extends familiar token behavior with additional payment-related features such as:
+Tempo introduces TIP-20, its stablecoin-oriented token standard. TIP-20 extends familiar ERC-20 token behavior with additional payment-related features such as:
 
 - transfer memos
 - compliance or policy hooks
@@ -53,9 +55,11 @@ This makes TIP-20 part of Tempo's stablecoin infrastructure story rather than ju
 
 ### 4. Machine Payments Protocol (MPP)
 
-Another major product line is MPP, the Machine Payments Protocol. This is one of the clearest signals that Tempo is targeting AI agents and machine-to-machine commerce, not just traditional crypto wallet users.
+Another major product line is MPP, the Machine Payments Protocol. MPP is an open standard for machine payments, co-authored with Stripe, that targets AI agents and machine-to-machine commerce.
 
-MPP is described as an open protocol for machine payments, built around HTTP payment flows. The core idea is that an application, agent, or user can request a service, receive payment requirements, and complete payment within the request flow instead of relying on API keys, monthly billing, or traditional checkout systems.
+MPP is built around HTTP payment flows. The core idea is that an application, agent, or user can request a service, receive payment requirements (via HTTP 402), and complete payment within the request flow instead of relying on API keys, monthly billing, or traditional checkout systems.
+
+MPP is designed to be rail-agnostic and extensible. At launch, it supports multiple payment methods including Tempo stablecoins, Stripe-backed fiat, Visa card payments, and Lightning network Bitcoin payments.
 
 This makes MPP central to Tempo's "agent economy" narrative.
 
@@ -63,12 +67,12 @@ This makes MPP central to Tempo's "agent economy" narrative.
 
 ### 1. Tempo Wallet
 
-Tempo Wallet appears to be more than a normal blockchain wallet. Public materials suggest it includes both:
+Tempo Wallet is more than a normal blockchain wallet. It includes both:
 
 - a web wallet / login flow
 - a CLI wallet and HTTP client
 
-Its public positioning focuses heavily on enabling AI agents or applications to pay for services on demand. Key wallet-related ideas include:
+Its positioning focuses heavily on enabling AI agents or applications to pay for services on demand. Key wallet-related ideas include:
 
 - passkey login
 - session keys
@@ -80,7 +84,7 @@ This makes the wallet closer to an agent payment tool than a conventional retail
 
 ### 2. CLI
 
-Tempo's CLI is positioned as a practical interface for developers and agents. It appears to support:
+Tempo's CLI is a practical interface for developers and agents. It supports:
 
 - wallet creation
 - funding and key management
@@ -90,7 +94,7 @@ Tempo's CLI is positioned as a practical interface for developers and agents. It
 
 ### 3. SDKs
 
-Tempo also provides a growing tooling ecosystem for developers. Public repositories indicate support for multiple languages, including:
+Tempo provides a growing tooling ecosystem for developers. Public repositories include support for multiple languages:
 
 - TypeScript
 - Go
@@ -101,9 +105,9 @@ These SDKs appear to cover both network interaction and machine payment flows.
 
 ### 4. Foundry and Standard Library
 
-Tempo has also built custom developer tooling around smart contract development, including:
+Tempo has built custom developer tooling around smart contract development, including:
 
-- a Tempo-specific Foundry distribution or integration
+- a Tempo-specific Foundry distribution
 - a Tempo standard library with payment-oriented interfaces and contracts
 
 This suggests a deliberate effort to make payment-native contract development easier for builders.
@@ -122,7 +126,7 @@ These components are important because they make Tempo look like a full platform
 
 ## Product Direction
 
-Based on its public materials, Tempo seems to be pursuing several product theses at once.
+Based on its official documentation and mainnet launch materials, Tempo is pursuing several product theses.
 
 ### A. Stablecoin Payments as Core Infrastructure
 
@@ -183,11 +187,15 @@ This framing helps separate what is definitely part of Tempo's public core from 
 
 One important distinction is that not everything associated with Tempo is necessarily part of Tempo's canonical protocol architecture.
 
-The following look like core public product areas:
+The following are core product areas:
 
 - Tempo mainnet
-- Tempo Transactions
-- TIP-20
+- Tempo Transactions (`0x76`)
+- TIP-20 and TIP-403
+- TIP-20 Rewards
+- Fee Manager and Fee AMM
+- Stablecoin DEX
+- pathUSD
 - MPP
 - wallet / CLI / SDKs
 - explorer / verification / token list / fee payer services

@@ -87,8 +87,10 @@ Its blockspace specifications introduce:
 
 Payment transactions are classified without reading blockchain state. In the current specification, a transaction is considered a payment transaction when:
 
-- `tx.to` starts with the TIP-20 payment prefix, or
-- for Tempo Transactions, every entry in `tx.calls` targets an address with the TIP-20 payment prefix
+- `tx.to` starts with the TIP-20 payment prefix `0x20c0000000000000000000000000`, or
+- for Tempo Transactions, every entry in `tx.calls` targets an address starting with the TIP-20 payment prefix `0x20c0000000000000000000000000`
+
+This classification works because TIP-20 tokens created through the TIP-20 Factory receive deterministic addresses that start with the payment prefix, so the protocol can identify payment transactions from transaction data alone without state lookups.
 
 Tempo's fee spec currently describes a conservative operating model where approximately **94% of blockspace is reserved for payment transactions** and approximately **6%** is left for general computation, with room to evolve as throughput scales.
 
@@ -172,6 +174,14 @@ Tempo's fee system changes the fee model in several important ways:
 - fee-token selection is built into protocol logic
 
 Tempo's public fee docs say the fixed base fee is chosen so that a TIP-20 transfer costs **less than $0.001**.
+
+As specified in TIP-1010, the current mainnet gas parameters are:
+
+- base fee: **20 billion attodollars per gas** (2 × 10^10)
+- total block gas limit: **500M gas**
+- general gas limit: **30M gas** per block
+
+A standard TIP-20 transfer (~50,000 gas) costs approximately 1,000 microdollars (0.1 cent / $0.001) at the base fee.
 
 #### Why Tempo does this
 
@@ -459,7 +469,7 @@ This is a major reason Tempo can push a more consumer-friendly account model.
 
 The machine-payments docs make the dependency especially clear. Tempo explicitly positions its network around:
 
-- roughly **500ms** finality for synchronous request/response payment flows
+- roughly **600ms** block production and deterministic finality for synchronous request/response payment flows
 - low enough fees for micropayments
 - fee sponsorship so clients can hold stablecoins instead of a separate gas token
 - high throughput for payment-channel settlement volume

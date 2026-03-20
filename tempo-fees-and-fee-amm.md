@@ -78,6 +78,14 @@ fee_in_microdollars = ceil(base_fee * gas_used / 10^12)
 
 This extra precision matters because very low payment fees would be too coarse if the protocol tried to express everything directly in 6-decimal token units per gas.
 
+As specified in TIP-1010, the current mainnet gas parameters are:
+
+- base fee: **20 billion attodollars per gas** (2 × 10^10)
+- total block gas limit: **500M gas**
+- general gas limit: **30M gas** per block
+
+A standard TIP-20 transfer (~50,000 gas) costs approximately 1,000 microdollars (0.1 cent / $0.001) at the base fee.
+
 ## 4. Who Pays the Fee
 
 By default, the sender pays the fee.
@@ -138,7 +146,9 @@ So the user-facing fee token remains stable from the payer's point of view, even
 
 ### 6.3 Validator settlement
 
-Fees accumulate through the fee system and are claimable by validators in the token they prefer to receive.
+Fees accumulate in the FeeManager contract. Validators can claim their accumulated fees at any time by calling `distributeFees()`.
+
+If the user's fee token differs from the validator's preferred token, the fee swap executes **immediately during the post-transaction step** at the fixed rate of 0.9970. If the tokens match, no conversion occurs.
 
 That is the reason the conversion layer exists at all: user token and validator token do not need to match.
 
@@ -298,6 +308,9 @@ That choice is not a small UX tweak. It is one of the foundations of Tempo's pay
 ## References
 
 - `https://docs.tempo.xyz/protocol/fees/spec-fee`
+- `https://docs.tempo.xyz/protocol/fees/spec-fee-amm`
+- `https://docs.tempo.xyz/protocol/fees/fee-amm`
+- `https://docs.tempo.xyz/protocol/tips/tip-1010`
 - `https://docs.tempo.xyz/protocol/fees/spec-fee-amm`
 - `https://docs.tempo.xyz/protocol/fees/fee-amm/`
 - `https://docs.tempo.xyz/guide/payments/pay-fees-in-any-stablecoin`
