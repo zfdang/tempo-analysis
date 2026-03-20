@@ -9,7 +9,7 @@ At the top level, Tempo presents four clear application surfaces:
 1. **Payments**
 2. **Stablecoin issuance and operations**
 3. **Stablecoin exchange and routing**
-4. **Machine payments / agent commerce**
+4. **Machine commerce, frontend, and MPP**
 
 Underneath those surfaces, Tempo exposes a set of tightly related protocol modules that make those applications possible, including:
 
@@ -107,7 +107,7 @@ Tempo Application Layer
 ├── Payments Apps
 ├── Stablecoin Issuance & Operations
 ├── Stablecoin Exchange & Routing
-└── Machine Commerce / MPP
+└── Machine Commerce / Frontend & MPP
 
 Built on:
 
@@ -179,9 +179,9 @@ Because exchange is built into the protocol, Tempo can support payment routing a
 
 ---
 
-## 4. Machine Commerce / MPP
+## 4. Machine Commerce / Frontend & MPP
 
-This module supports agentic and programmatic commerce.
+This module supports agentic and programmatic commerce, extending seamlessly into frontend applications.
 
 It includes:
 
@@ -191,8 +191,9 @@ It includes:
 - sessions for continuous payments
 - streaming and pay-per-use interactions
 - multi-service payment-aware workflows
+- **Frontend integrations and SDKs:** including the `useAgent` React hook, which simplifies binding payment flows and agentic actions into interactive UI dashboards without requiring complex local orchestration.
 
-In practical terms, this is the part of Tempo's application layer that lets APIs and services become directly monetizable for software agents.
+In practical terms, this is the part of Tempo's application layer that lets APIs and services become directly monetizable for software agents, and enables modern frontend applications to embed native AI-agent payment experiences seamlessly.
 
 ---
 
@@ -364,7 +365,7 @@ Below is a practical view of how these modules relate to one another:
 │  1. Payments Apps                                          │
 │  2. Stablecoin Issuance & Operations                       │
 │  3. Stablecoin Exchange & Routing                          │
-│  4. Machine Commerce / MPP                                 │
+│  4. Machine Commerce / Frontend & MPP                      │
 └────────────────────────────────────────────────────────────┘
                            │
       ┌────────────────────┼────────────────────┬────────────────────┐
@@ -472,7 +473,7 @@ If someone asks, "What are its main functions?" the cleanest summary is:
 - **payments**
 - **stablecoin issuance**
 - **stablecoin exchange**
-- **machine payments**
+- **machine commerce and frontend integration**
 
 If someone asks, "How is it designed?" the cleanest answer is:
 

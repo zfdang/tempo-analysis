@@ -4,6 +4,34 @@ This repository contains technical analysis of the Tempo protocol and ecosystem.
 
 Tempo is a blockchain purpose-built for payments, incubated by Paradigm and Stripe. Mainnet launched on March 18, 2026, alongside the Machine Payments Protocol (MPP), an open standard for machine payments co-authored with Stripe. The documents below are ordered so a reader can move from ecosystem context and high-level intuition through to protocol-level details.
 
+```
+Tempo
+├── L1 Network
+│   ├── Simplex BFT consensus (~600ms blocks)
+│   └── Payment lanes (~94% payment / ~6% general)
+├── 0x76 Transaction Type
+│   ├── Passkeys / WebAuthn signing
+│   ├── 2D nonces & batch calls
+│   ├── Fee sponsorship
+│   ├── Access keys & delegation
+│   └── Account Keychain
+├── Asset Layer
+│   ├── TIP-20 (stablecoin token standard)
+│   ├── TIP-20 Rewards
+│   ├── TIP-403 (compliance & policy registry)
+│   └── pathUSD (native quote token)
+├── Fee & Exchange Layer
+│   ├── USD-denominated fees (attodollars)
+│   ├── Fee AMM
+│   └── Stablecoin DEX (enshrined orderbook)
+├── MPP (HTTP 402 machine payments)
+├── Wallet / CLI / SDKs
+└── Infra Apps
+    ├── Explorer & Contract Verification
+    ├── Tokenlist Registry
+    └── Key Manager & Fee Payer
+```
+
 ## Recommended Reading Order
 
 ### Context and Overview
