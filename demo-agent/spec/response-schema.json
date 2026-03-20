@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/demo-agent/response-schema.json",
+  "title": "ConferenceTripResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "status",
+    "recommended_option",
+    "alternatives",
+    "search_spend",
+    "services_used"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "needs_clarification",
+        "search_budget_exceeded",
+        "service_unavailable",
+        "payment_failed",
+        "no_valid_itinerary"
+      ]
+    },
+    "recommended_option": {
+      "$ref": "#/$defs/ranked_option"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ranked_option"
+      },
+      "maxItems": 5
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "services_used": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/service_usage"
+      }
+    },
+    "search_spend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/payment_trace"
+      }
+    }
+  },
+  "$defs": {
+    "flight_option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "origin",
+        "destination",
+        "departure_time",
+        "arrival_time",
+        "price_usd",
+        "red_eye"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "departure_time": {
+          "type": "string"
+        },
+        "arrival_time": {
+          "type": "string"
+        },
+        "price_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "red_eye": {
+          "type": "boolean"
+        }
+      }
+    },
+    "hotel_option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "nightly_rate_usd",
+        "nights",
+        "estimated_total_usd"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nightly_rate_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nights": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "estimated_total_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "distance_minutes_to_venue": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "ranked_option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "flight",
+        "hotel",
+        "estimated_total_usd",
+        "why"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "flight": {
+          "$ref": "#/$defs/flight_option"
+        },
+        "hotel": {
+          "$ref": "#/$defs/hotel_option"
+        },
+        "estimated_total_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "why": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "service_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_name",
+        "service_type",
+        "status"
+      ],
+      "properties": {
+        "service_name": {
+          "type": "string"
+        },
+        "service_type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "payment_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_name",
+        "token",
+        "amount",
+        "tx_hash"
+      ],
+      "properties": {
+        "service_name": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tx_hash": {
+          "type": "string"
+        },
+        "receipt_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
