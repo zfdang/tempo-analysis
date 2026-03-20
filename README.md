@@ -2,7 +2,6 @@
 
 This repository contains technical analysis of the Tempo protocol and ecosystem.
 
-Tempo is a blockchain purpose-built for payments, incubated by Paradigm and Stripe. Mainnet launched on March 18, 2026, alongside the Machine Payments Protocol (MPP), an open standard for machine payments co-authored with Stripe. The documents below are ordered so a reader can move from ecosystem context and high-level intuition through to protocol-level details.
 
 ```
 Tempo
