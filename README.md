@@ -36,10 +36,7 @@ Tempo
 
 ### Context and Overview
 
-1. [tempo-ecosystem-and-partners.md](tempo-ecosystem-and-partners.md)  
-   Mainnet launch status, backing (Paradigm + Stripe), enterprise partners, target use cases, and official links.
-
-2. [tempo-overview.md](tempo-overview.md)  
+1. [tempo-overview.md](tempo-overview.md)  
    What Tempo is, what product areas it includes, and the main ideas behind the stack.
 
 3. [tempo-architecture.md](tempo-architecture.md)  
@@ -108,7 +105,6 @@ Tempo
 
 Reading the list above in order covers:
 
-- ecosystem context: backing, partnerships, mainnet status, and target use cases
 - the overall Tempo product story and layered architecture
 - the protocol stack from network to application layer
 - system contracts and address architecture
