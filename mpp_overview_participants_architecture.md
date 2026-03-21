@@ -240,27 +240,42 @@ In other words, the core MPP layer standardizes the **challenge / credential / r
 
 ### 6.1 Charge flow
 
-```text
-Client -> Server: GET /resource
-Server -> Client: 402 + WWW-Authenticate: Payment
-Client -> Payment rail: fulfill payment
-Client -> Server: retry + Authorization: Payment
-Server -> Client: 200 + Payment-Receipt + resource
+```mermaid
+sequenceDiagram
+    participant C as Client / Agent
+    participant S as Server / Merchant
+    participant R as Payment Rail
+
+    C->>S: GET /resource
+    S-->>C: 402 Payment Required<br/>WWW-Authenticate: Payment
+    C->>R: Fulfill payment (method-specific)
+    R-->>C: Payment credential
+    C->>S: GET /resource<br/>Authorization: Payment
+    S->>S: Verify payment credential
+    S-->>C: 200 OK + Payment-Receipt + resource
 ```
 
 This is the simplest and most direct MPP usage pattern.
 
 ### 6.2 Session flow
 
-```text
-Client -> Server: request protected resource
-Server -> Client: 402 (session challenge)
-Client -> Server: Authorization: Payment(action="open")
-Server -> Client: 200 + receipt + start service
-Client -> Server: Authorization: Payment(action="voucher") [repeat]
-Server -> Client: 200 + updated receipt
-Client -> Server: Authorization: Payment(action="close")
-Server -> Client: 200 + final receipt
+```mermaid
+sequenceDiagram
+    participant C as Client / Agent
+    participant S as Server / Merchant
+
+    C->>S: Request protected resource
+    S-->>C: 402 Payment Required (session challenge)
+    C->>S: Authorization: Payment (action="open")
+    S-->>C: 200 OK + receipt + session started
+
+    loop Streaming / metered usage
+        C->>S: Authorization: Payment (action="voucher")
+        S-->>C: 200 OK + updated receipt
+    end
+
+    C->>S: Authorization: Payment (action="close")
+    S-->>C: 200 OK + final receipt + session settled
 ```
 
 This model is more suitable for streaming usage, token-metered services, and other high-frequency microbilling scenarios.
