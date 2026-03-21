@@ -86,18 +86,21 @@ Tempo
 
 ### Machine Payments Layer
 
-15. [tempo-mpp-architecture-and-modules.md](docs/tempo-mpp-architecture-and-modules.md)  
+15. [mpp_overview_participants_architecture.md](docs/mpp_overview_participants_architecture.md)  
+    Who is driving MPP, the current public ecosystem participants, protocol status, and the high-level architecture.
+
+16. [tempo-mpp-architecture-and-modules.md](docs/tempo-mpp-architecture-and-modules.md)  
     The architecture and module breakdown of Tempo's Machine Payments Protocol.
 
-16. [tempo-mpp-vs-x402.md](docs/tempo-mpp-vs-x402.md)  
+17. [tempo-mpp-vs-x402.md](docs/tempo-mpp-vs-x402.md)  
     A comparison between Tempo's MPP approach and `x402`.
 
 ### Application Layer and Developer Surface
 
-17. [tempo-application-layer-overview.md](docs/tempo-application-layer-overview.md)  
+18. [tempo-application-layer-overview.md](docs/tempo-application-layer-overview.md)  
     How payments, issuance, exchange, and machine commerce sit at the application layer.
 
-18. [tempo-github-repos.md](docs/tempo-github-repos.md)  
+19. [tempo-github-repos.md](docs/tempo-github-repos.md)  
     A guide to Tempo's public repositories and what each one does.
 
 ## Coverage Map
@@ -110,5 +113,5 @@ Reading the list above in order covers:
 - transactions, accounts, passkeys, and delegated access keys
 - assets: TIP-20, rewards, and TIP-403 compliance policies
 - fees, stablecoin exchange, and cross-stablecoin routing
-- machine payments, MPP vs x402, and agentic commerce
+- machine payments, MPP ecosystem participants and status, MPP vs x402, and agentic commerce
 - application-layer design and the public repo surface

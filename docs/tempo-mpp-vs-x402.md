@@ -57,6 +57,60 @@ So while x402 is centered on **one paid request at a time**, MPP is designed for
 
 ---
 
+## Institutional Backing and Ecosystem Participants
+
+As of **March 21, 2026**, the public picture around these two approaches is also different at the organizational level, not just the protocol level.
+
+### Tempo MPP
+
+Public materials show MPP as a protocol driven primarily by **Tempo Labs** and **Stripe**.
+
+- The [MPP homepage](https://mpp.dev) describes it as **"Designed by Tempo x Stripe."**
+- Stripe's [March 18, 2026 launch post](https://stripe.com/blog/machine-payments-protocol) describes MPP as an open standard **co-authored by Tempo and Stripe**.
+- The current [IETF payment authentication draft](https://datatracker.ietf.org/doc/draft-ryan-httpauth-payment/) lists authors from **Tempo Labs** and **Stripe**.
+- The public [payment discovery draft](https://paymentauth.org/draft-payment-discovery-00.html) adds visible contributors from **Merit Systems**.
+
+From a funding and institutional-backing perspective, the clearest public signal sits on the **Tempo** side of the stack:
+
+- Tempo's public materials describe Tempo as a payments-first blockchain [incubated by Stripe and Paradigm](https://tempo.xyz/blog/introducing-tempo).
+- In other words, the most clearly disclosed backing behind the Tempo-led side of MPP is **Stripe + Paradigm**, combined with Stripe's own direct participation as a protocol co-author and payment-method provider.
+- I did **not** find a separate standalone MPP fundraise or independent MPP foundation in the official materials reviewed.
+
+The visible participant set around MPP is already broader than the core authors:
+
+- **Stripe** is both a co-author and a production payment-method provider in the published MPP method set.
+- **Cloudflare** documents [MPP support in its Agents platform](https://developers.cloudflare.com/agents/agentic-payments/mpp/).
+- The public [MPP specification hub](https://paymentauth.org) already exposes method families around **Tempo**, **Stripe**, **Lightning**, and **Card**, with transport bindings for HTTP, JSON-RPC, and MCP.
+- On the broader **Tempo** side, [Tempo's launch materials](https://tempo.xyz/blog/introducing-tempo) list initial design partners including **Anthropic**, **Coupang**, **Deutsche Bank**, **DoorDash**, **Lead Bank**, **Mercury**, **Nubank**, **OpenAI**, **Revolut**, **Shopify**, **Standard Chartered**, and **Visa**.
+- Stripe's launch post names early MPP-powered services including **Browserbase**, **PostalForm**, **Prospect Butcher Co.**, **Stripe Climate**, and **Parallel Web Systems**.
+
+**Practical interpretation:** MPP currently looks like a **Tempo + Stripe-led protocol family**. Its strongest publicly visible institutional backing comes from **Stripe**, **Paradigm**, and the companies directly co-authoring and shipping the protocol.
+
+### x402
+
+Public materials show x402 as a more **Coinbase Developer Platform (CDP)**-led effort.
+
+- Coinbase's official [x402 docs](https://docs.cdp.coinbase.com/x402/welcome) describe x402 as an open payment protocol **developed by Coinbase**.
+- The public [x402 whitepaper](https://www.x402.org/x402-whitepaper.pdf) is authored by **Erik Reppel, Ronnie Caspers, Kevin Leffew, Danny Organ, Dan Kim, and Nemil Dalal** from **Coinbase Developer Platform / x402**.
+- The official [x402 website](https://www.x402.org) says the site is maintained by **Coinbase Developer Platform**.
+
+Unlike Tempo, x402 is not presented in the official materials as a separately financed startup ecosystem with a standalone investor roster:
+
+- I did **not** find a separate x402 fundraising announcement in the official materials reviewed.
+- The clearest public governance and institutional-backing signal is Coinbase's [September 23, 2025 announcement](https://www.coinbase.com/blog/coinbase-and-cloudflare-will-launch-x402-foundation) that the **x402 Foundation** would be **co-founded by Coinbase and Cloudflare**.
+- So for x402, it is more accurate to think in terms of **institutional sponsors and governance partners** than a separately disclosed protocol cap table.
+
+The visible participant set around x402 is already large:
+
+- Coinbase's [launch post](https://www.coinbase.com/developer-platform/discover/launches/x402) says x402 launched alongside collaborators including **AWS**, **Anthropic**, **Circle**, and **NEAR**.
+- The official [x402 ecosystem page](https://www.x402.org/ecosystem) says **Cloudflare** co-founded the x402 Foundation with Coinbase and provides native x402 support in Workers and AI Agents.
+- That same ecosystem page lists infrastructure participants such as **Alchemy**, **AWS**, **Cloudflare**, **Stripe**, **Vercel**, **World**, **Messari**, and **Nansen**.
+- Public Coinbase materials also highlight visible adopters such as **Freepik** and **CoinGecko**.
+
+**Practical interpretation:** x402 currently looks like a **Coinbase/CDP-led open standard** with growing multi-company participation. Its strongest public anchors are **Coinbase**, **Cloudflare**, and collaborators across the stablecoin / agentic-commerce ecosystem rather than a separately disclosed investor list.
+
+---
+
 ## Layered Architecture Comparison
 
 Below is a practical layered view of **Tempo MPP vs. x402**.
@@ -303,3 +357,19 @@ That is why the clearest mental model is:
 
 - **x402 = paid request standard**
 - **MPP = machine payments framework that includes paid requests and more**
+
+---
+
+## Selected Source Links
+
+- MPP homepage: <https://mpp.dev>
+- Stripe MPP launch post: <https://stripe.com/blog/machine-payments-protocol>
+- Cloudflare MPP docs: <https://developers.cloudflare.com/agents/agentic-payments/mpp/>
+- Payment authentication IETF draft: <https://datatracker.ietf.org/doc/draft-ryan-httpauth-payment/>
+- Payment discovery draft: <https://paymentauth.org/draft-payment-discovery-00.html>
+- Tempo introduction / incubation: <https://tempo.xyz/blog/introducing-tempo>
+- x402 docs: <https://docs.cdp.coinbase.com/x402/welcome>
+- x402 whitepaper: <https://www.x402.org/x402-whitepaper.pdf>
+- x402 launch post: <https://www.coinbase.com/developer-platform/discover/launches/x402>
+- x402 Foundation announcement: <https://www.coinbase.com/blog/coinbase-and-cloudflare-will-launch-x402-foundation>
+- x402 ecosystem page: <https://www.x402.org/ecosystem>
